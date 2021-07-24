@@ -4,11 +4,17 @@
             <form @submit.prevent="loginForm()">
                 <div class="form-group row">
                     <label for="email" class="col-sm-2">Email address:</label>
-                    <input type="email" class="form-control col-sm-5" v-model="user.email" placeholder="Enter email" id="email">
+                    <input type="email" class="form-control col-sm-5" :class="{'is-invalid': errors.email}" v-model="user.email" placeholder="Enter email" >
+                    <div class="invalid-feedback" v-if="errors.email">
+                        {{errors.email[0]}}
+                    </div>
                 </div>
                 <div class="form-group row">
                     <label for="pwd" class="col-sm-2">Password:</label>
-                    <input type="password" class="form-control col-sm-5" v-model="user.password" placeholder="Enter password" id="pwd">
+                    <input type="password" class="form-control col-sm-5" v-model="user.password" :class="{'is-invalid': errors.password}" placeholder="Enter password">
+                    <div class="invalid-feedback" v-if="errors.password">
+                        {{errors.password[0]}}            
+                    </div>
                 </div>
                 <div class="form-group row">
                     <button type="submit" class="btn btn-primary col-sm-2">Submit</button>
@@ -20,7 +26,6 @@
 
 <script>
 
-// import Api from "./config/api.js";
 import axios from 'axios';
 export default {
     name: 'login',
@@ -37,10 +42,15 @@ export default {
         loginForm: function() {
             axios.post('http://localhost:8088/api/login/', this.user)
             .then((response) => {
-                console.log(response);
+                console.log('Dang nhap thanh cong');
+                window.localStorage.setItem('token', response.data.token);
+                this.$router.push({
+                    name: 'dashboard'
+                });
             })
-            .catch( (error) => {
-                console.log(error);
+            .catch((error) => {
+                this.errors = error.response.data.errors;
+                console.log(error.response.data);
             })
         }
     }
