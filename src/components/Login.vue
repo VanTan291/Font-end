@@ -2,7 +2,9 @@
     <div class="row container">
         <div class="col-sm-12">
             <form @submit.prevent="loginForm()">
-                <b v-if="errors.fail">{{errors.fail}}</b>
+                <div class="alert alert-danger" role="alert" v-if="errors.fail" >
+                    {{errors['fail']}}
+                </div>
                 <div class="form-group row">
                     <label for="email" class="col-sm-2">Email address:</label>
                     <input type="email" class="form-control col-sm-5" :class="{'is-invalid': errors.email }" v-model="user.email" placeholder="Enter email" >
@@ -18,7 +20,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <button type="submit" class="btn btn-primary col-sm-2"><span class="spinner-border" v-if="loading"></span> Submit</button>
+                    <button type="submit" class="btn btn-primary col-sm-2">Submit</button>
                 </div>
             </form>
         </div>
@@ -37,28 +39,24 @@ export default {
                 password: ''
             },
             errors: {},
-            loading: false
         }
     },
     methods: {
         loginForm: function() {
-            this.loading = true;
             axios.post('http://localhost:8088/api/login/', this.user)
             .then((response) => {
-                console.log('Dang nhap thanh cong');
                 window.localStorage.setItem('token', response.data.token);
                 this.$router.push({
                     name: 'dashboard'
                 });
             })
             .catch((error) => {
-                this.loading = false;
                 if (error.response.data.errors) {
                     this.errors = error.response.data.errors;
                 } else {
                     this.errors['fail'] = error.response.data.fail;
+                    console.log(this.errors['fail']);
                 }
-                //console.log(this.errors['fail']);
             })
         }
     }

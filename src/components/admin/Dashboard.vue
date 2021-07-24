@@ -1,5 +1,7 @@
 <template>
-    <div class="">doasboard</div>
+    <div class="">doasboard
+        <button v-on:click="logout()">Logout</button>
+    </div>
 </template>
 
 <script>
@@ -22,6 +24,18 @@ export default {
             })
             .catch(() => {
                this.$router.push({name: 'login'});
+            })
+        },
+        logout: function() {
+            axios.post('logout')
+            .then(() => {
+                window.localStorage.removeItem('token');
+                this.$router.push({
+                    name: 'login'
+                });
+            })
+            .catch((error) => {
+                console.log(error)
             })
         }
     }
