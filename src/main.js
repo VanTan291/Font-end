@@ -3,7 +3,6 @@ import 'mutationobserver-shim'
 import Vue from 'vue'
 import './plugins/bootstrap-vue'
 import App from './App.vue'
-import store from './store'
 
 //vue-router
 import VueRouter from 'vue-router'
@@ -19,6 +18,5 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
-  router,
-  store
+  router
 }).$mount('#app')
