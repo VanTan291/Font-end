@@ -1,12 +1,13 @@
 <template>
     <div class="">doasboard
-        <button v-on:click="logout()">Logout</button>
+        <button @click.prevent="logout">Logout</button>
+        <b>{{name}}</b>
     </div>
 </template>
 
 <script>
 
-import axios from '../config/api';
+import { mapActions, mapGetters } from 'vuex'
 export default {
     data() {
         return {
@@ -16,28 +17,15 @@ export default {
     mounted() {
         this.checkLogin();
     },
+    computed: {
+        ...mapGetters(['name'])
+    },
     methods: {
-        checkLogin: function() {
-            axios.get('user')
-            .then((response) => {
-                console.log(response)
-            })
-            .catch(() => {
-               this.$router.push({name: 'login'});
-            })
-        },
-        logout: function() {
-            axios.post('logout')
-            .then(() => {
-                window.localStorage.removeItem('token');
-                this.$router.push({
-                    name: 'login'
-                });
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+        ...mapActions(['checkLogin', 'logoutAdmin']),
+        logout() {
+            this.logoutAdmin();
         }
+
     }
 }
 </script>
