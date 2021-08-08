@@ -3,13 +3,14 @@ import vm from '../../main.js';
 const state = {
     state: {
        userProfile: {},
-       errors: {}
+       formValidate: {}
     },
 }
 
 const getters = {
-    name: state => state.user,
-    message: state => state.errors,
+    name: state => state.state.userProfile.name,
+    formValidate: state => state.state.formValidate,
+    
 }
 
 const actions = {
@@ -22,10 +23,9 @@ const actions = {
             if (error.response.data.errors) {
                 this.errors = error.response.data.errors;
             } else {
-                this.errors['fail'] = error.response.data.fail;
+                this.errors= error.response.data;
             }
             commit('MESSAGE_ERRORS',this.errors);
-            console.log(this.errors);
         }
         
 
@@ -52,11 +52,12 @@ const actions = {
 
 const mutations = {
     GET_USER(state, user) {
-        state.userProfile = user;
+        state.state.userProfile = user;
     },
     MESSAGE_ERRORS(state, errors) {
-        state.errors = errors
-        console.log(state.errors);
+        state.state.formValidate = errors;
+        
+        console.log(state.state.formValidate);
     }
 }
 

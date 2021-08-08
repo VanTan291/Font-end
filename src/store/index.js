@@ -3,12 +3,14 @@ import Vuex from 'vuex'
 
 //import modules
 import auth from './modules/auth'
+import post from './modules/post'
 
 Vue.use(Vuex)
 
 const storeData = {
 	modules: {
-		auth
+		auth,
+		post
 	},
 }
 

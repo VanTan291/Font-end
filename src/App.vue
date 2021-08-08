@@ -1,33 +1,20 @@
 <template>
   <div id="app" class="mt-0">
-    <div class="container bg-light p-5">
-       <router-view>
-      <Header/>
-      <div class="row">
-        <Sidebar/>
-        <Content/>
-      </div>
-      <Footter/>
+    <div class="container bg-light pt-2">
+      <router-view>
+        <ListPost/>
       </router-view>
     </div>
-   
   </div>
 </template>
 
 <script>
 
-import Header from './components/layouts/Header.vue'
-import Sidebar from './components/layouts/Sidebar.vue'
-import Content from './components/layouts/Content.vue'
-import Footter from './components/layouts/Footter.vue'
-
+import ListPost from './components/ListPost.vue'
 export default {
   name: 'App',
   components: {
-    Header,
-    Sidebar,
-    Content,
-    Footter
+    ListPost
   },
 }
 </script>
