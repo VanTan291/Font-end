@@ -2,13 +2,14 @@ import axios from '../../config/api';
 import vm from '../../main.js';
 const state = {
     state: {
-        listPost: []
+        listPost: [],
+        postEdit: []
     },
 }
 
 const getters = {
     listPost: state => state.state.listPost,
-    
+    postEdit: state => state.state.postEdit,
 }
 
 const actions = {
@@ -30,6 +31,27 @@ const actions = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    async getPostEditById({commit}, id) {
+        try {
+            const response = await axios.get(`post/${id}/edit`);
+            commit('GET_POST_BY_ID', response.data);
+            vm.$router.push({name: 'edit'});
+        } catch (error) {
+            console.log(error)
+        }
+    },
+
+    async updatePostById({commit}, post) {
+        try {
+            console.log(post);
+            await axios.post(`post/${post.id}/update`, post);
+            vm.$router.push({path: '/post'});
+        } catch (error) {
+            commit('GET_POST_BY_ID');
+            console.log(error)
+        }
     }
 }
 
@@ -40,6 +62,10 @@ const mutations = {
     GET_POST(state, post) {
         state.state.listPost = post.data;
         //console.log(state.listPost);
+    },
+    GET_POST_BY_ID(state, postEdit) {
+        state.state.postEdit = postEdit;
+        console.log(postEdit);
     }
 }
 
