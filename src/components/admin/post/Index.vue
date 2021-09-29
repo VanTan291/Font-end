@@ -1,14 +1,14 @@
 <template>
-    <div class="">
+    <div class="col-sm-12">
         <div class="alert alert-success alert-dismissible" v-if="message">
             <button type="button" class="close" data-dismiss="alert"  v-on:click="message = ''">&times;</button>
             <strong>{{ message }}!</strong>
         </div>
         <router-link :to="{ path: 'post-add' }"  tag="button" class="float-left btn-dark btn-sm mb-1">Add_post</router-link>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
+        <div class="table-responsive p-0 no-padding">
+            <table class="table table-bordered table-hover text-nowrap">
                 <thead>
-                    <tr>
+                    <tr role="row" >
                         <th>#</th>
                         <th>image</th>
                         <th>title</th>
@@ -18,17 +18,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr  v-for="(item, index) in listPost" :key="index">
+                    <tr  v-for="(item, index) in listPost" :key="index" role="row">
                         <td>{{ index+1 }}</td>
                         <td> <img :src="'images/' + item.image_full_path" class="img-responsive" height="70" width="90"> </td>
-                        <td>{{ item.title }}</td>
-                        <td>{{  item.content.length > 50 ?  item.content.substr(0,50)+ '...' : item.content}}</td>
+                        <td>{{ item.title | strLimit(20) }}</td>
+                        <td>{{  item.content | strLimit(50)}}</td>
                         <td>
                             <span class="badge badge-success" v-if="item.status == 1"> {{ active  }}</span>
                             <span class="badge badge-secondary" v-if="item.status == 0">{{ inActive }}</span>
                         </td>
-                        <td col="2">
-                            <button class="btn btn-sm btn-warning" v-on:click.once="getPostById(item.id)">edit</button>
+                        <td>
+                            <button class="btn btn-sm btn-warning mr-1" v-on:click.once="getPostById(item.id)">edit</button>
                             <button class="btn btn-sm btn-danger" v-on:click.once="deletePost(item.id)">delete</button>
                         </td>
                     </tr>
@@ -63,6 +63,17 @@ export default {
         deletePost(id) {
             this.removePostById(id);
         }
+    },
+    filters: {
+      strLimit(value, size) {
+        if (!value) return '';
+        value = value.toString();
+
+        if (value.length <= size) {
+          return value;
+        }
+        return value.substr(0, size) + '...';
+      },
     }
 }
 </script>

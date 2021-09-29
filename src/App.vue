@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="mt-0">
-    <div class="container bg-light pt-2">
+    <div class="bg-light">
       <router-view>
         <ListPost/>
       </router-view>

@@ -13,9 +13,7 @@
         </div>
         <div class="col-sm-10">
              <div class="row mt-5">
-                <div class="col-sm-12">
-                    <router-view></router-view>
-                </div>
+                <router-view></router-view>
             </div>
         </div>
     </div>
