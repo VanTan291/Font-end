@@ -22,7 +22,7 @@
                     <button type="submit" class="btn btn-primary col-sm-2">Submit</button>
                 </div>
 
-                <router-link :to="{ path: 'register' }"  tag="a">Registerdd</router-link>
+                <router-link :to="{ path: 'register' }"  tag="a">Register</router-link>
             </form>
         </div>
     </div>
