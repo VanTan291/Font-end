@@ -27,8 +27,6 @@ const actions = {
             }
             commit('MESSAGE_ERRORS',this.errors);
         }
-        
-
     },
     async checkLogin({commit}) {
         try {
@@ -46,6 +44,20 @@ const actions = {
             vm.$router.push({name: 'login'});
         } catch (error) {
             console.log(error)
+        }
+    },
+    async register({commit}, user) {
+        try {
+            const response = await axios.post('register', user);
+            window.localStorage.setItem('token', response.data.token);
+            vm.$router.push({name: 'dashboard'});
+        } catch (error) {
+            if (error.response.data.errors) {
+                this.errors = error.response.data.errors;
+            } else {
+                this.errors= error.response.data;
+            }
+            commit('MESSAGE_ERRORS',this.errors);
         }
     }
 }

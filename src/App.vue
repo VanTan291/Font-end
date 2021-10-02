@@ -2,7 +2,7 @@
   <div id="app" class="mt-0">
     <div class="bg-light">
       <router-view>
-        <ListPost/>
+        <Index/>
       </router-view>
     </div>
   </div>
@@ -10,11 +10,11 @@
 
 <script>
 
-import ListPost from './components/ListPost.vue'
+import Index from './components/Index.vue'
 export default {
   name: 'App',
   components: {
-    ListPost
+    Index
   },
 }
 </script>

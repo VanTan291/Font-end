@@ -21,6 +21,8 @@
                 <div class="form-group row">
                     <button type="submit" class="btn btn-primary col-sm-2">Submit</button>
                 </div>
+
+                <router-link :to="{ path: 'register' }"  tag="a">Register</router-link>
             </form>
         </div>
     </div>

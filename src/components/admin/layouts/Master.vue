@@ -1,18 +1,14 @@
 <template>
+
     <div class="row">
-        <div class="col-sm-12 bg-secondary p-3">
-            <button @click.prevent="logout" class="float-right">Logout</button>
-            <b v-if="name" class="text-danger float-right">{{ name }}</b>
+        <div class="col-sm-12">
+        <Header />
         </div>
         <div class="col-sm-2 border-right">
-            <ul class="nav flex-column float-left p-3">
-                <li class="nav-item">
-                    <router-link :to="{ path: 'post' }"  tag="a">post</router-link>
-                </li>
-            </ul>
+            <LeftBar />
         </div>
         <div class="col-sm-10">
-             <div class="row mt-5">
+             <div class="row">
                 <router-view></router-view>
             </div>
         </div>
@@ -22,6 +18,10 @@
 <script>
 
 import { mapActions, mapGetters } from 'vuex'
+
+import Header from './Header.vue'
+import LeftBar from './LeftBar.vue'
+
 export default {
     data() {
         return {
@@ -33,7 +33,8 @@ export default {
         }
     },
     components: {
-       
+       Header,
+       LeftBar
     },
     mounted() {
         this.checkLogin();

@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-12">
+    <div class="col-sm-12 mt-2">
         <div class="alert alert-success alert-dismissible" v-if="message">
             <button type="button" class="close" data-dismiss="alert"  v-on:click="message = ''">&times;</button>
             <strong>{{ message }}!</strong>
