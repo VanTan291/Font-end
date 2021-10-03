@@ -1,8 +1,8 @@
 <template>
-  <div id="app" class="mt-0">
-    <div class="bg-light">
+  <div id="app" class="mt-0" >
+    <div class="">
       <router-view>
-        <Index/>
+        <Home/>
       </router-view>
     </div>
   </div>
@@ -10,11 +10,11 @@
 
 <script>
 
-import Index from './components/Index.vue'
+import Home from './components/user/Home.vue'
 export default {
   name: 'App',
   components: {
-    Index
+    Home
   },
 }
 </script>

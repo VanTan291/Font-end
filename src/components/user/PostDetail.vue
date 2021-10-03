@@ -2,7 +2,7 @@
 <div class="row pb-3">
     <div class="col-sm-12">
         <h1>{{ postDetail.title }}</h1>
-        <img :src="'images/' + postDetail.image_full_path" class="img-responsive" height="700" width="80%">
+        <img :src="postDetail.image_full_path" class="img-responsive" height="700" width="80%">
         <p>{{ postDetail.content | stripHTML }}</p>
     </div>
 </div>

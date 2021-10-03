@@ -1,35 +1,35 @@
 <template>
-     <div class="row">
-            <div class="col-sm-12">
-                <h3>Them bai post</h3>
+    <div class="row">
+        <div class="col-sm-7">
+            <h3 class="mb-5 mt-5 col-sm-3">Sửa bài viết</h3>
             <form @submit.prevent="updatePost()">
                 <div class="form-group row">
-                    <label for="" class="col-sm-5">Title</label>
+                    <label for="" class="col-sm-5">Tiêu đề</label>
                     <input type="title" class="form-control col-sm-7"  placeholder="Enter title" v-model="postEdit.title">
                     <div class="invalid-feedback" >
                         
                     </div>
                 </div>
-                 <div class="form-group row">
-                    <label for="" class="col-sm-5">image</label>
-                    <img :src="'images/' + postEdit.image_full_path" class="img-responsive col-sm-2" height="70" width="90">
+                    <div class="form-group row">
+                    <label for="" class="col-sm-5">Hình ảnh</label>
+                    <img :src="postEdit.image_full_path" class="img-responsive col-sm-7" height="100" width="100">
                     <div class="invalid-feedback" >
 
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="" class="col-sm-5">Content</label>
-                    <textarea cols="70" rows="10" name="content" v-model="postEdit.content" class="col-sm-7"></textarea>
+                    <label for="" class="col-sm-5">Nội dung</label>
+                    <textarea cols="70" rows="10" name="content" v-model="postEdit.content" class="col-sm-7 form-control"></textarea>
                     <div class="invalid-feedback" >
                         
                     </div>
                 </div> 
 
                 <div class="form-group row">
-                    <label for="" class="col-sm-5">Status</label>
-                    <select name="status" v-model="postEdit.status">
-                        <option value="1">Show</option>
-                        <option value="0">Hide</option>
+                    <label for="" class="col-sm-5">Trạng thái</label>
+                    <select name="status" v-model="postEdit.status" class="col-sm-2">
+                        <option value="1">hiện</option>
+                        <option value="0">ẩn</option>
                     </select>
                     <div class="invalid-feedback" >
                         
@@ -37,11 +37,13 @@
                 </div>
                 
                 <div class="form-group row float-right">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
                 </div>
             </form>
-            </div>
         </div>
+        <div class="col-sm-5"></div>
+    </div>
+
        
 </template>
 

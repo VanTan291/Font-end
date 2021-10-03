@@ -5,6 +5,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import {routes} from './routes'
 import './plugins/bootstrap-vue'
+
+//js and css custom
+import './assets/js/scripts'
+import './assets/js/cdn'
+import './assets/styles/styles.css'
+
+
 import App from './App.vue'
 import store from './store'
 

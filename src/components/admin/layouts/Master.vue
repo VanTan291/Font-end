@@ -1,14 +1,13 @@
 <template>
-
-    <div class="row">
-        <div class="col-sm-12">
-        <Header />
-        </div>
-        <div class="col-sm-2 border-right">
-            <LeftBar />
-        </div>
-        <div class="col-sm-10">
-             <div class="row">
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <LeftBar />
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <TopNavar />
+            <!-- Page content-->
+            <div class="container-fluid">
                 <router-view></router-view>
             </div>
         </div>
@@ -19,7 +18,7 @@
 
 import { mapActions, mapGetters } from 'vuex'
 
-import Header from './Header.vue'
+import TopNavar from './TopNavar.vue'
 import LeftBar from './LeftBar.vue'
 
 export default {
@@ -33,7 +32,7 @@ export default {
         }
     },
     components: {
-       Header,
+       TopNavar,
        LeftBar
     },
     mounted() {
