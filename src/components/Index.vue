@@ -1,11 +1,15 @@
 <template>
-  <div id="app" class="mt-0">
-   <router-view />
+  <div class="">
+    Lam Van Tan
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+
 }
 </script>
+
+<style>
+
+</style>

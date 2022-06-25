@@ -1,24 +1,34 @@
-const axios = require("axios");
-const apiUrl = "http://localhost:8088/api/";
+import axios from 'axios';
+// import router from '../router';
 
-export default {
-    getHeaders() {
-        let token = window.localStorage.getItem("token");
-        if (token == null) {
-            return {}
-        }
-        return { Authorization: "Bearer " + token };
-    },
-    get(url) {
-        return axios.get(apiUrl + url, { headers: this.getHeaders()  });
-    },
-    post(url, data) {
-        return axios.post(apiUrl +  url, data, { headers: this.getHeaders() });
-    },
-    put(url, data) {
-        return axios.put(apiUrl +  url, data, { headers: this.getHeaders() });
-    },
-    delete(url, data) {
-        return axios.delete(apiUrl +  url, data, { headers: this.getHeaders() });
-    },
+const initialState = {
+    isAuthenticated: false,
+    token: ''
 };
+
+const api = axios.create({
+    'baseURL': 'http://localhost:3000/',
+    headers: {
+        Accept: 'application/json',
+    }
+});
+
+api.interceptors.request.use(function (config) {
+    initialState.token = localStorage.getItem('_token');
+    config.headers.Authorization = initialState.token ? `Bearer ${initialState.token}` : '';
+    console.log(config)
+    return config;
+});
+
+api.interceptors.response.use(function (response) {
+    return response.data
+}, function (error) {
+    switch (error.response.status) {
+        case 401:
+            //router.push({ path: '/admin/login' })
+            break;
+    }
+    return Promise.reject(error);
+});
+
+export default api;
