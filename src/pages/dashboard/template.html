@@ -1,0 +1,43 @@
+
+    <!---------------------------------------Middle columns  start---------------->
+    <div class="col-12 col-lg-6">
+        <div class="middle-column">
+            <div class="card">
+                <div class="card-body bg-transparent">
+                    <form class="form-inline">
+                        <div class="input-group w-100">
+                            <input type="text" name="message" id="message" placeholder="Message"
+                                class="form-control form-control-md">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-3" v-for="item in listPostByUser" :key="item._id">
+                <div class="card-body" >
+                    <div class="media">
+                        <h5>{{ profileByUser.name }}</h5>
+                        <div class="media-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <img  v-bind:src="item.file_url" width="100%" alt="img" class="rounded mr-3">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="card-text text-justify">{{ item.content }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <small>5min</small>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!------------------------Middle column Ends---------------->
