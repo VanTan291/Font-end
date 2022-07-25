@@ -6,14 +6,7 @@ export default {
     },
 
     RESQUEST_FAIL(state, response) {
-        state.errorRequest = response,
-        state.errorLogin = null,
-        state.errorEmail = null
-    },
-
-    ERROR_EMAIL(state, response) {
-        state.errorEmail = response,
-        state.errorLogin = null,
-        state.errorRequest = null
+        state.errorPassword = response.errors.password,
+        state.errorEmail = response.errors.email
     }
 }

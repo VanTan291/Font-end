@@ -10,11 +10,3 @@ export default new Vuex.Store({
 		dashboard: Dashboard,
     }
 });
-// const storeData = {
-// 	modules: {
-// 		auth: Auth
-// 	},
-// }
-
-// const store = new Vuex.Store(storeData)
-// export default store

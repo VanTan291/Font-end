@@ -6,11 +6,11 @@ const routes = [
     {
         path: '/admin',
         component: Layout,
-        meta: { requiresAuth: true },
         children: [{
                 path: '',
                 component: Dashboard,
                 name: 'dashboard',
+                meta: { requiresAuth: true }
             },
         ]
     },
@@ -18,7 +18,6 @@ const routes = [
         path: '/login',
         component: Login,
         name: 'login',
-        meta: { guest: true }
     },
 ];
 
