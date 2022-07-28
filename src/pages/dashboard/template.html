@@ -12,7 +12,7 @@
                             </div>
                         </div>
                         <ModalPost v-show="isModalVisible" @close="closeModal">
-                            <template v-slot:header>
+                            <!-- <template v-slot:header>
                                 Tao bai viet moi
                             </template>
 
@@ -22,31 +22,44 @@
 
                             <template v-slot:footer>
                                 This is a new modal footer.
-                            </template>
+                            </template> -->
                         </ModalPost>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="card mt-3" v-for="item in listPostByUser" :key="item._id">
-            <div class="card-body">
-                <div class="media">
-                    <h5>{{ profileByUser.name }}</h5>
-                    <div class="media-body">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <img v-bind:src="item.file_url" width="100%" alt="img" class="rounded mr-3">
+
+        <div class="" v-if="listPostByUser.length > 0" >
+            <div class="card mt-3" v-for="item in listPostByUser" :key="item._id">
+                <div class="card-body">
+                    <div class="media">
+                        <h5>{{ profileByUser.name }}</h5>
+                        <div class="media-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <img v-bind:src="item.file_url" width="100%" alt="img" class="rounded mr-3">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="card-text text-justify">{{ item.content }}</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <p class="card-text text-justify">{{ item.content }}</p>
-                            </div>
-                        </div>
+                        <small>5min</small>
                     </div>
-                    <small>5min</small>
+                    <hr>
                 </div>
-                <hr>
+            </div>
+        </div>
+        <div v-else>
+            <div class="card mt-3">
+                <div class="card-body">
+                    <div class="media">
+                        <h5 class="text-center">{{ listPostByUserEmpty}}</h5>
+                    </div>
+                    <hr>
+                </div>
             </div>
         </div>
     </div>

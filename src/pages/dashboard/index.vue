@@ -21,7 +21,8 @@ export default {
   computed: {
      ...mapGetters({
         profileByUser: 'dashboard/profileByUser',
-        listPostByUser: 'dashboard/listPostByUser'
+        listPostByUser: 'dashboard/listPostByUser',
+        listPostByUserEmpty: 'dashboard/listPostByUserEmpty'
     }),
   },
   methods: {

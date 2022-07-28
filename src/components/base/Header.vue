@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
+    <nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color:#3097D1">
         <a href="index.html" class="navbar-brand">
             <img src="" alt="logo" class="img-fluid" width="80px" height="100px">
         </a>
@@ -19,11 +19,21 @@
                 <input type="text" name="search" id="search" placeholder="Search" class="form-control form-control-sm">
             </form>
         </div>
-</nav>
+        <div class="">
+            <button @click="logout()">logout</button>
+        </div>
+    </nav>
 </template>
 
 <script>
+import router from '../../router';
 export default {
-    name: 'Header'
+    name: 'Header',
+    methods: {
+        logout() {
+            localStorage.removeItem('_token');
+            router.push({ name: 'login' });
+        },
+    },
 }
 </script>

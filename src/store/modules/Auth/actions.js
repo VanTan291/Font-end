@@ -5,14 +5,14 @@ export default {
         const formData = new FormData();
         formData.append('email', data.email);
         formData.append('password', data.password);
-        api.post('login', formData)
+
+        await api.post('login', formData)
             .then(responseLogin => {
-                if (responseLogin.status == 200) {
-                    localStorage.setItem('_token', responseLogin.token); 
+                if (responseLogin.code == 200) {
+                    localStorage.setItem('_token', responseLogin.data.token);      
                     window.location.href='/admin';
                 } 
                 else {
-                    console.log('aaa',responseLogin)
                     commit('RESQUEST_FAIL', responseLogin);
                 }
             })
