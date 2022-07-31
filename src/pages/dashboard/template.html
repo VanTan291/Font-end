@@ -4,11 +4,11 @@
             <div class="card-body bg-transparent">
                 <form class="form-inline">
                     <div class="input-group w-100">
-                        <input type="text" placeholder="Message" class="form-control form-control-md"
-                            @click="showModal">
-                        <div class="input-group-append" @click="showModal">
+                        <input type="text" placeholder="Bạn đang nghĩ gì?" class="form-control rounded form-control-md"
+                            v-b-modal.modal-scrollable>
+                        <div class="input-group-append" v-b-modal.modal-scrollable>
                             <div class="input-group-text">
-                                <i class="fas fa-camera">show</i>
+                                Đăng bài
                             </div>
                         </div>
                         <ModalPost v-show="isModalVisible" @close="closeModal">
@@ -33,7 +33,7 @@
             <div class="card mt-3" v-for="item in listPostByUser" :key="item._id">
                 <div class="card-body">
                     <div class="media">
-                        <h5>{{ profileByUser.name }}</h5>
+                        <h5>Lam</h5>
                         <div class="media-body">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -56,7 +56,7 @@
             <div class="card mt-3">
                 <div class="card-body">
                     <div class="media">
-                        <h5 class="text-center">{{ listPostByUserEmpty}}</h5>
+                        <h5 class="text-center">{{ listPostByUserEmpty }}</h5>
                     </div>
                     <hr>
                 </div>

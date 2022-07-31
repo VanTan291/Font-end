@@ -20,6 +20,7 @@
             </form>
         </div>
         <div class="">
+            
             <button @click="logout()">logout</button>
         </div>
     </nav>
@@ -27,13 +28,19 @@
 
 <script>
 import router from '../../router';
+//import { mapGetters } from 'vuex';
 export default {
     name: 'Header',
+    computed: {
+        // ...mapGetters({
+        //     userProfile: 'auth/userProfile',
+        // }),
+    },
     methods: {
         logout() {
             localStorage.removeItem('_token');
             router.push({ name: 'login' });
         },
-    },
+    }
 }
 </script>

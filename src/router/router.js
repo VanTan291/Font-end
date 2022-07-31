@@ -7,12 +7,11 @@ const routes = [
         path: '/admin',
         component: Layout,
         children: [{
-                path: '',
-                component: Dashboard,
-                name: 'dashboard',
-                meta: { requiresAuth: true }
-            },
-        ]
+            path: '',
+            component: Dashboard,
+            name: 'dashboard',
+            meta: { requiresAuth: true }
+        }]
     },
     {
         path: '/login',

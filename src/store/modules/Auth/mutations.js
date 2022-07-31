@@ -8,5 +8,8 @@ export default {
         state.errorLogin = response,
         state.errorRequest = null,
         state.errorEmail = null
+    },
+    CHECK_AUTH(state, response) {
+        state.userProfile = response.result.params;
     }
 }

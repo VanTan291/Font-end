@@ -1,11 +1,28 @@
 <template src="./modalTemplate.html"></template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: "Modal",
+  data() {
+    return {
+      thumbnail: null,
+    }
+  },
+  computed: {
+     ...mapGetters({
+        newPost: 'post/newPost',
+    }),
+  },
   methods: {
-    close() {
-      this.$emit("close");
+    getCollectionThumbnail(e) {
+      this.newPost.thumbnail = e.target.files[0];
+
+      var reader = new FileReader();
+      reader.onload = (e) => {
+        this.thumbnail = e.target.result;
+      };
+      reader.readAsDataURL(this.newPost.thumbnail);
     },
   },
 };

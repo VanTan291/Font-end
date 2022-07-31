@@ -5,7 +5,16 @@
 </template>
 
 <script>
+//import { mapActions } from 'vuex';
 export default {
   name: 'App',
+  // mounted() {
+  //   this.checkAuth();
+  // },
+  // methods: {
+  //   ...mapActions({
+  //     checkAuth: 'auth/checkAuth'
+  //   }),
+  // }
 }
 </script>

@@ -15,19 +15,17 @@ export default {
     ModalPost
   },
   mounted() {
-    this.getProfileUser();
     this.getListPostByUser();
   },
   computed: {
      ...mapGetters({
-        profileByUser: 'dashboard/profileByUser',
+        // userProfile: 'auth/userProfile',
         listPostByUser: 'dashboard/listPostByUser',
         listPostByUserEmpty: 'dashboard/listPostByUserEmpty'
     }),
   },
   methods: {
     ...mapActions({
-      getProfileUser: 'dashboard/getProfileUser',
       getListPostByUser: 'dashboard/getListPostByUser'
     }),
     showModal(e) {

@@ -20,4 +20,16 @@ export default {
                 commit('LOGIN_FAIL', error.response.data);
             })
     },
+
+    async checkAuth({ commit }) {
+        return await api.get('api/check-auth').then(response => {
+            if (response && response != undefined) {
+                console.log(response);
+                commit('CHECK_AUTH', response);
+            }
+        }).catch((error) => {
+            console.log(error.response.data)
+            window.location.href='/login';
+        });
+    },
 }

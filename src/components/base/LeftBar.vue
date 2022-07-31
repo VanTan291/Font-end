@@ -16,7 +16,7 @@
             height="120px"
             class="rounded-circle mt-n5"
           />
-          <h5 class="card-title">{{ profileByUser.name }}</h5>
+          <h5 class="card-title"></h5>
           <p class="card-text text-justify mb-2">
             I wish i was a little bit taller, wish i was a baller, wish i had a
             girl… also.
@@ -44,15 +44,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+
 export default {
-  name: "Leftbar",
-  computed: {
-     ...mapGetters({
-        profileByUser: 'dashboard/profileByUser',
-    }),
-  },
- 
+  name: "Leftbar"
 };
 </script>
 
