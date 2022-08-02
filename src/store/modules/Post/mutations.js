@@ -1,14 +1,7 @@
 
 export default {
-    GET_PROFILE_USER(state, response) {
-        state.profileByUser = response.result;
+    CREATE_POST_MESSAGE(state, response) {
+        state.message = response.data.message;
+        state.status = response.code;
     },
-    LIST_POST_BY_USER(state, response) {
-        state.listPostByUser = response.result.data;
-        state.listPostByUserEmpty = null;
-    },
-    LIST_POST_BY_USER_EMPTY(state, response) {
-        state.listPostByUser = {};
-        state.listPostByUserEmpty = response.message
-    }
 }

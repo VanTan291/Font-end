@@ -33,9 +33,9 @@
             <div class="card mt-3" v-for="item in listPostByUser" :key="item._id">
                 <div class="card-body">
                     <div class="media">
-                        <h5>Lam</h5>
+                        <h5>{{ item.user.name }}</h5>
                         <div class="media-body">
-                            <div class="row">
+                            <div class="row" v-if="item.file_url">
                                 <div class="col-sm-12">
                                     <img v-bind:src="item.file_url" width="100%" alt="img" class="rounded mr-3">
                                 </div>
@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                         </div>
-                        <small>5min</small>
+                        <small>{{ item.date_create | convertDate }}</small>
                     </div>
                     <hr>
                 </div>

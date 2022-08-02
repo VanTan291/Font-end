@@ -20,7 +20,6 @@
             </form>
         </div>
         <div class="">
-            
             <button @click="logout()">logout</button>
         </div>
     </nav>

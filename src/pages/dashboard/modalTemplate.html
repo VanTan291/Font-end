@@ -1,11 +1,11 @@
 <transition name="modal">
-    <b-modal id="modal-scrollable" 
-    no-close-on-backdrop no-close-on-esc
-    :hide-footer="true" scrollable title="Tạo bài viết mới">
-        <form >
+    <b-modal id="modal-scrollable" ref="my-modal" 
+        no-close-on-backdrop no-close-on-esc
+        :hide-footer="true" scrollable title="Tạo bài viết mới">
+        <form @submit.prevent="saveCollection">
             <div class="form-group">
                 <label for="email">Bạn đang nghĩ gì?</label>
-                <textarea type="text" class="form-control" rows="7"></textarea>
+                <textarea type="text" class="form-control" rows="7"  v-model="newPost.content"></textarea>
                 <p class="text-danger"></p>
             </div>
             <div class="form-group">

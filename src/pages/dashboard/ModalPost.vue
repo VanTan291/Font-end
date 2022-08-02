@@ -24,6 +24,13 @@ export default {
       };
       reader.readAsDataURL(this.newPost.thumbnail);
     },
+    async saveCollection() {
+      let result = await this.$store.dispatch("post/createPost", this.newPost);
+      if (result) {
+        console.log('aaa')
+        this.$refs['my-modal'].hide()
+      }
+    }
   },
 };
 </script>

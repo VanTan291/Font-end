@@ -3,6 +3,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import ModalPost from './ModalPost.vue';
+import moment from 'moment';
 
 export default {
   name: 'Dashboard',
@@ -34,6 +35,11 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    }
+  },
+  filters: {
+    convertDate(date) {
+      return moment(date).format('DD-MM-YYYY HH:MM:ss');
     }
   }
 };
