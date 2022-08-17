@@ -10,11 +10,8 @@ export default {
         return await api.post('api/post/create', formData)
             .then(response => {
                 if (response && response != undefined) {
-                    console.log(response);
-                    commit('CREATE_POST_MESSAGE', response);
+                    return response;
                 }
-
-                return true;
             })
             .catch((error) => {
                 commit('CREATE_POST_MESSAGE', error.response.data);

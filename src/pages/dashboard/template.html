@@ -1,10 +1,11 @@
 <div class="col-12 col-lg-6">
+    <b-alert :show="alertMessage != '' && 10" @dismiss-count-down="10" fade> {{ alertMessage }}!</b-alert>
     <div class="middle-column">
         <div class="card">
             <div class="card-body bg-transparent">
                 <form class="form-inline">
                     <div class="input-group w-100">
-                        <input type="text" placeholder="Bạn đang nghĩ gì?" class="form-control rounded form-control-md"
+                        <input placeholder="Bạn đang nghĩ gì?" class="form-control rounded form-control-md"
                             v-b-modal.modal-scrollable>
                         <div class="input-group-append" v-b-modal.modal-scrollable>
                             <div class="input-group-text">
@@ -12,17 +13,6 @@
                             </div>
                         </div>
                         <ModalPost v-show="isModalVisible" @close="closeModal">
-                            <!-- <template v-slot:header>
-                                Tao bai viet moi
-                            </template>
-
-                            <template v-slot:body>
-                                This is a new modal body.
-                            </template>
-
-                            <template v-slot:footer>
-                                This is a new modal footer.
-                            </template> -->
                         </ModalPost>
                     </div>
                 </form>
@@ -33,7 +23,11 @@
             <div class="card mt-3" v-for="item in listPostByUser" :key="item._id">
                 <div class="card-body">
                     <div class="media">
-                        <h5>{{ item.user.name }}</h5>
+                        <div class="row">
+                            <div class="col-sm-10"><h5>{{ item.user.name }}</h5></div>
+                            <button class="col-sm-2 btn btn-sm btn-danger btn-block" @click="deletePost(item._id)">xoá bài</button>
+                        </div>
+                        <hr>
                         <div class="media-body">
                             <div class="row" v-if="item.file_url">
                                 <div class="col-sm-12">

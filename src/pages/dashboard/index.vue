@@ -9,7 +9,7 @@ export default {
   name: 'Dashboard',
   data() {
     return {
-      isModalVisible: false
+      isModalVisible: false,
     }
   },
   components: {
@@ -22,12 +22,13 @@ export default {
      ...mapGetters({
         // userProfile: 'auth/userProfile',
         listPostByUser: 'dashboard/listPostByUser',
-        listPostByUserEmpty: 'dashboard/listPostByUserEmpty'
+        listPostByUserEmpty: 'dashboard/listPostByUserEmpty',
+        alertMessage: 'dashboard/alertMessage',
     }),
   },
   methods: {
     ...mapActions({
-      getListPostByUser: 'dashboard/getListPostByUser'
+      getListPostByUser: 'dashboard/getListPostByUser',
     }),
     showModal(e) {
       e.preventDefault();
@@ -35,6 +36,16 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+    countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown
+    },
+    async deletePost(id) {
+      const result = await this.$store.dispatch("dashboard/deletePost", id);
+      if (result) {
+        this.$store.commit('dashboard/LIST_POST_BY_USER', result)
+        this.$store.commit('dashboard/ALERT_MESSAGE', result)
+      }
     }
   },
   filters: {

@@ -1,4 +1,5 @@
 export const state = {
     listPostByUser: {},
-    listPostByUserEmpty: ''
+    listPostByUserEmpty: '',
+    alertMessage: '',
 }

@@ -1,5 +1,5 @@
 <transition name="modal">
-    <b-modal id="modal-scrollable" ref="my-modal" 
+    <b-modal id="modal-scrollable" ref="my-modal"
         no-close-on-backdrop no-close-on-esc
         :hide-footer="true" scrollable title="Tạo bài viết mới">
         <form @submit.prevent="saveCollection">
@@ -15,7 +15,7 @@
                 <br>
                 <div class="custom-file">
                     <input type="file" id="input-thumbnail" @change="getCollectionThumbnail" hidden>
-                    <label class="form-control col-12" for="input-thumbnail">ファイルを選択</label>
+                    <label class="form-control col-12" for="input-thumbnail">Tải ảnh lên</label>
                 </div>
                 <p class="pl-3 text-danger" ></p>
                 <!-- <input type="file" class="form-control" /> -->

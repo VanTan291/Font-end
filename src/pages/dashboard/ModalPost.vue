@@ -12,7 +12,7 @@ export default {
   computed: {
      ...mapGetters({
         newPost: 'post/newPost',
-    }),
+    })
   },
   methods: {
     getCollectionThumbnail(e) {
@@ -27,10 +27,11 @@ export default {
     async saveCollection() {
       let result = await this.$store.dispatch("post/createPost", this.newPost);
       if (result) {
-        console.log('aaa')
+        this.$store.commit('dashboard/LIST_POST_BY_USER', result)
+        this.$store.commit('dashboard/ALERT_MESSAGE', result)
         this.$refs['my-modal'].hide()
       }
-    }
+    },
   },
 };
 </script>
